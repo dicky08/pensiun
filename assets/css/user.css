@@ -1,0 +1,41 @@
+body {
+	font-family: 'Slabo 27px', serif;
+}
+
+.container {
+	font-weight: bold;
+}
+
+.container a {
+	letter-spacing: 1px;
+}
+
+.slide p,
+h2 {
+
+	letter-spacing: 2px;
+	font-weight: bold;
+}
+
+.card-body h5 {
+	font-size: 24px;
+	letter-spacing: .5px;
+}
+
+footer {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* LOGIN */
+.attn,
+.logPegawai {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/* MOBILE */
+@media(max-width:576px) {
+	.logo img {
+		width: 150px;
+	}
+}
