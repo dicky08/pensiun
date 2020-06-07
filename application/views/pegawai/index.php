@@ -33,7 +33,7 @@
 						<p class="card-text">Batas Usia Pensiun Pengajuan dimulai ketika sudah memasuki umur 60th.</p>
 						<?php if ($pesan == "gagal") : ?>
 						<?php else : ?>
-							<a href="#" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Ajukan</a>
+							<a href="<?= site_url('batas_usia'); ?>" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Ajukan</a>
 						<?php endif; ?>
 					</div>
 				</div>
@@ -46,7 +46,7 @@
 						<p class="card-text">Pengajuan Pensiun ini hanya berlaku jika Pegawai dinyatakan meninggal.</p>
 						<?php if ($pesan == "gagal") : ?>
 						<?php else : ?>
-							<a href="#" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Ajukan</a>
+							<a href="<?= site_url('janda_duda'); ?>" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Ajukan</a>
 						<?php endif; ?>
 					</div>
 				</div>

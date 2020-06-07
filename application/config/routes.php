@@ -51,7 +51,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 */
 $route['default_controller'] = 'home';
 $route['pengajuan'] = 'auth';
-$route['upload-pengajuan'] = 'pengajuan';
+$route['janda_duda'] = 'pengajuan/janda_duda';
+$route['batas_usia'] = 'pengajuan/batas_usia';
 $route['logout'] = 'auth/logout';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

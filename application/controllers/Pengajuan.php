@@ -8,12 +8,20 @@ class Pengajuan extends CI_Controller
 		parent::__construct();
 		$this->load->model('pengajuan_model', 'pengajuan');
 	}
-	public function index()
+	public function janda_duda()
 	{
-		$data['title'] = "Upload Pengajuan";
+		$data['title'] = "Upload Pengajuan Janda/Duda";
 		$this->load->view('templates_user/header', $data);
 		$this->load->view('templates_user/navbar', $data);
-		$this->load->view('pengajuan/index', $data);
+		$this->load->view('pengajuan/janda_duda', $data);
+		$this->load->view('templates_user/footer');
+	}
+	public function batas_usia()
+	{
+		$data['title'] = "Upload Pengajuan Janda/Duda";
+		$this->load->view('templates_user/header', $data);
+		$this->load->view('templates_user/navbar', $data);
+		$this->load->view('pengajuan/batas_usia', $data);
 		$this->load->view('templates_user/footer');
 	}
 }
