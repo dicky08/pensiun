@@ -24,4 +24,12 @@ class Pengajuan extends CI_Controller
 		$this->load->view('pengajuan/batas_usia', $data);
 		$this->load->view('templates_user/footer');
 	}
+	public function permintaan_sendiri()
+	{
+		$data['title'] = "Upload Pengajuan Janda/Duda";
+		$this->load->view('templates_user/header', $data);
+		$this->load->view('templates_user/navbar', $data);
+		$this->load->view('pengajuan/permintaan_sendiri', $data);
+		$this->load->view('templates_user/footer');
+	}
 }
