@@ -13,14 +13,13 @@
 		<div class="row">
 			<div class="col-md-4">
 				<div class="card">
-					<img src="<?= base_url('assets/img/self.jpg') ?>" class="card-img-top" alt="pengajuan">
+					<img src="<?= base_url('assets/img/duda2.jpg') ?>" class="card-img-top" alt="pengajuan">
 					<div class="card-body">
-						<h5 class="card-title">Permintaan Sendiri</h5>
-						<p class="card-text">Pengajuan Pensiun ini bisa dilakukan ketika masa kerja diatas dari 30 th.</p>
-
+						<h5 class="card-title">Janda / Duda</h5>
+						<p class="card-text">Pengajuan Pensiun ini hanya berlaku jika Pegawai dinyatakan meninggal.</p>
 						<?php if ($pesan == "gagal") : ?>
 						<?php else : ?>
-							<a href="<?= base_url('permintaan_sendiri') ?>" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Ajukan</a>
+							<a href="<?= site_url('janda_duda'); ?>" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Ajukan</a>
 						<?php endif; ?>
 					</div>
 				</div>
@@ -38,15 +37,17 @@
 					</div>
 				</div>
 			</div>
+
 			<div class="col-md-4">
 				<div class="card">
-					<img src="<?= base_url('assets/img/duda2.jpg') ?>" class="card-img-top" alt="pengajuan">
+					<img src="<?= base_url('assets/img/self.jpg') ?>" class="card-img-top" alt="pengajuan">
 					<div class="card-body">
-						<h5 class="card-title">Janda / Duda</h5>
-						<p class="card-text">Pengajuan Pensiun ini hanya berlaku jika Pegawai dinyatakan meninggal.</p>
+						<h5 class="card-title">Permintaan Sendiri</h5>
+						<p class="card-text">Pengajuan Pensiun ini bisa dilakukan ketika masa kerja diatas dari 30 th.</p>
+
 						<?php if ($pesan == "gagal") : ?>
 						<?php else : ?>
-							<a href="<?= site_url('janda_duda'); ?>" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Ajukan</a>
+							<a href="<?= base_url('permintaan_sendiri') ?>" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Ajukan</a>
 						<?php endif; ?>
 					</div>
 				</div>

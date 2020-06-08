@@ -3,16 +3,18 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Pegawai extends CI_Controller
 {
+	protected $sesi;
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->model('pengajuan_model', 'pengajuan');
+		$this->sesi = $this->session->userdata('sesi');
 	}
 	public function index()
 	{
-		$data['sesi'] = $this->session->userdata('sesi');
-		$sesi = $data['sesi'];
+		$sesi = $this->sesi;
 		$join = $this->pengajuan->getOneData(['nip' => $sesi['nip']], 'pegawai')->row_array();
+		var_dump($join);
 		$tglPegawai = strtotime($join['tgl_lahir']);
 		$tgl_lahir  = date('Y-n-d', $tglPegawai);
 		$enamBulan  = date('Y-n-d', strtotime('-180 days', strtotime($tgl_lahir)));
