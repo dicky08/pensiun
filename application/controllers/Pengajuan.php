@@ -44,11 +44,14 @@ class Pengajuan extends CI_Controller
 		$join = $this->pengajuan->getOneData(['username' => $sesi['username']], 'pegawai')->row_array();
 		$nip = $join['nip'];
 		$this->pengajuan->uploadData('pdf', 1024, 'upload_file');
+
 		$nameGambar = ($_FILES['upload_file']['name']);
 		$upload = [
 			'tgl_pengajuan' => time(),
 			'nip'			=> $nip,
 			'id_kategori'	=> 3,
+			'id_admin'		=> 0,
+			'upload_file'	=> $nameGambar,
 			'photo' 		=> $nameGambar,
 			'status' 		=> 'process'
 		];
