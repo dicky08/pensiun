@@ -13,7 +13,7 @@ class Pengajuan_model extends CI_Model
 	}
 	function insert_data($data, $table)
 	{
-		return $this->db->insert($table . $data);
+		return $this->db->insert($table, $data);
 	}
 
 	function uploadData($ekstensiPdf, $sizePdf, $nameUpload)

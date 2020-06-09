@@ -13,8 +13,7 @@ class Pegawai extends CI_Controller
 	public function index()
 	{
 		$sesi = $this->sesi;
-		$join = $this->pengajuan->getOneData(['nip' => $sesi['nip']], 'pegawai')->row_array();
-		var_dump($join);
+		$join = $this->pengajuan->getOneData(['username' => $sesi['username']], 'pegawai')->row_array();
 		$tglPegawai = strtotime($join['tgl_lahir']);
 		$tgl_lahir  = date('Y-n-d', $tglPegawai);
 		$enamBulan  = date('Y-n-d', strtotime('-180 days', strtotime($tgl_lahir)));

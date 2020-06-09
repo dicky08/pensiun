@@ -31,8 +31,7 @@ class Pengajuan extends CI_Controller
 	public function permintaan_sendiri()
 	{
 		$sesi = $this->sesi;
-		$join = $this->pengajuan->getOneData(['nip' => $sesi['nip']], 'pegawai')->row_array();
-
+		$join = $this->pengajuan->getOneData(['username' => $sesi['username']], 'pegawai')->row_array();
 		$data['title'] = "Upload Pengajuan Permintaan Sendiri";
 		$this->load->view('templates_user/header', $data);
 		$this->load->view('templates_user/navbar', $data);
@@ -42,14 +41,13 @@ class Pengajuan extends CI_Controller
 	public function upload_permintaan_sendiri()
 	{
 		$sesi = $this->sesi;
-		$join = $this->pengajuan->getOneData(['nip' => $sesi['nip']], 'pegawai')->row_array();
-
+		$join = $this->pengajuan->getOneData(['username' => $sesi['username']], 'pegawai')->row_array();
+		$nip = $join['nip'];
 		$this->pengajuan->uploadData('pdf', 1024, 'upload_file');
-		$sesi = $this->sesi['nip'];
 		$nameGambar = ($_FILES['upload_file']['name']);
 		$upload = [
 			'tgl_pengajuan' => time(),
-			'nip'			=> $sesi,
+			'nip'			=> $nip,
 			'id_kategori'	=> 3,
 			'photo' 		=> $nameGambar,
 			'status' 		=> 'process'

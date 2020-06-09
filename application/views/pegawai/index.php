@@ -1,4 +1,5 @@
-	<div class="container mt-5">
+	<br><br><br><br>
+	<div class="container">
 		<?php if ($pesan == "gagal") : ?>
 			<?php echo "<div class='container alert alert-danger' role='alert'>
 		Mohon maaf Pengajuan belum bisa dilakukan! Pengajuan bisa dilakukan terhitung sebelum 6 bulan atau kurang, dimulai dari Tanggal Lahir.
@@ -9,7 +10,7 @@
 				<div>Silahkan pilih jenis Pengajuan Pensiun!</div>
 			</div>
 		<?php endif; ?>
-		<h2 class="text-center mb-4">Kategori Pensiun</h2>
+		<h2 class="text-center mt-6 mb-6">Kategori Pensiun</h2>
 		<div class="row">
 			<div class="col-md-4">
 				<div class="card">
