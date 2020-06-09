@@ -43,24 +43,18 @@ class Pengajuan extends CI_Controller
 	{
 		$sesi = $this->sesi;
 		$join = $this->pengajuan->getOneData(['nip' => $sesi['nip']], 'pegawai')->row_array();
-		// var_dump($name);
-		$config['upload_path']          = './assets/img_pengajuan/permintaan_sendiri';
-		$config['allowed_types']        = 'pdf';
-		$config['max_size']             = 2048;
-		$config['max_width']            = 1024;
-		$config['max_height']           = 768;
 
-		$this->load->library('upload', $config);
-		$this->upload->initialize($config);
-		if (!$this->upload->do_upload('upload_file')) {
-			$error = array('error' => $this->upload->display_errors());
-			var_dump($error);
-			// $this->load->view('upload_form', $error);
-		} else {
-			$data = array('upload_data' => $this->upload->data());
-
-			var_dump($data);
-		}
+		$this->pengajuan->uploadData('pdf', 1024, 'upload_file');
+		$sesi = $this->sesi['nip'];
+		$nameGambar = ($_FILES['upload_file']['name']);
+		$upload = [
+			'tgl_pengajuan' => time(),
+			'nip'			=> $sesi,
+			'id_kategori'	=> 3,
+			'photo' 		=> $nameGambar,
+			'status' 		=> 'process'
+		];
+		var_dump($upload);
 
 
 		$data['title'] = "Upload Pengajuan Permintaan Sendiri";
