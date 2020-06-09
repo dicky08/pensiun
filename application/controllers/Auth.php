@@ -46,6 +46,26 @@ class Auth extends CI_Controller
 		}
 	}
 
+	public function registrasi()
+	{
+		$valid = Validasi::validate();
+		$this->form_validation->set_rules('nip', 'NIP', 'required|trim', $valid);
+		$this->form_validation->set_rules('nama', 'Nama', 'required|trim', $valid);
+		$this->form_validation->set_rules('username', 'Username', 'required|trim', $valid);
+		$this->form_validation->set_rules('password', 'Password', 'required|trim', $valid);
+		$this->form_validation->set_rules('password2', 'Password2', 'required|trim', $valid);
+
+		if ($this->form_validation->run() == false) {
+			# code...
+			$data['title'] = "Registrasi";
+			$this->load->view('templates_user/header', $data);
+			$this->load->view('templates_user/navbar', $data);
+			$this->load->view('auth/register');
+			$this->load->view('templates_user/footer');
+		} else {
+		}
+	}
+
 	public function logout()
 	{
 		session_destroy();

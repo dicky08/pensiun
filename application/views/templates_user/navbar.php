@@ -10,10 +10,13 @@
 					<a class="nav-item nav-link" href="<?= base_url('home') ?>"><i class="fas fa-home"></i> Beranda</a>
 					<a class="nav-item nav-link" href="#"><i class="fas fa-sync"></i> Alur Pendaftaran</a>
 
-					<a class="nav-item nav-link" href="<?= base_url('pengajuan') ?>"><i class="fas fa-paper-plane"></i> Pengajuan Pensiun</a>
+					<a class="nav-item nav-link" href="<?= base_url('register') ?>"><i class="fas fa-paper-plane"></i> Registrasi</a>
+					<a class="nav-item nav-link" href="#"><i class="fas fa-sync"></i> Login</a>
 				<?php else : ?>
 					<a class="nav-item nav-link" href="<?= base_url('home') ?>"><i class="fas fa-home"></i> Beranda</a>
-					<a class="nav-item nav-link" href="#"><i class="fas fa-sync"></i> Alur Pendaftaran</a>
+					<a class="nav-item nav-link" href="<?= base_url('register'); ?>"><i class="fas fa-sync"></i> Registrasi</a>
+
+					<a class="nav-item nav-link" href="#"><i class="fas fa-sync"></i> Login</a>
 
 					<a class="nav-item nav-link" href="<?= base_url('pegawai') ?>"><i class="fas fa-paper-plane"></i> Pengajuan Pensiun</a>
 					<a class="nav-item nav-link" onclick="return confirm('Apakah yakin ingin logout?')" href=" <?= base_url('logout') ?>"><i class="fas fa-sign-out-alt"></i> Logout
