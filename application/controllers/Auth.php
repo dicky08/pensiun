@@ -51,8 +51,8 @@ class Auth extends CI_Controller
 		$valid = Validasi::validate();
 		$this->form_validation->set_rules('nip', 'NIP', 'required|trim', $valid);
 		$this->form_validation->set_rules('nama', 'Nama', 'required|trim', $valid);
-		$this->form_validation->set_rules('username', 'Username', 'required|trim', $valid);
-		$this->form_validation->set_rules('password', 'Password', 'required|trim', $valid);
+		$this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[pegawai.username]', $valid);
+		$this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[3]', $valid);
 		$this->form_validation->set_rules('password2', 'Password2', 'required|trim', $valid);
 
 		if ($this->form_validation->run() == false) {
