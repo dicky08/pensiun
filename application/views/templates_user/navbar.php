@@ -11,12 +11,16 @@
 					<a class="nav-item nav-link" href="#"><i class="fas fa-sync"></i> Alur Pendaftaran</a>
 					<a class="nav-item nav-link" href="<?= base_url('register') ?>"><i class="fas fa-paper-plane"></i> Registrasi</a>
 					<a class="nav-item nav-link" href="<?= base_url('login') ?>"><i class="fas fa-sign-in-alt"></i> Login</a>
+
 				<?php else : ?>
 					<a class="nav-item nav-link" href="<?= base_url('home') ?>"><i class="fas fa-home"></i> Beranda</a>
-					<a class="nav-item nav-link" href="<?= base_url('pegawai') ?>"><i class="fas fa-paper-plane"></i> Pengajuan Pensiun</a>
+					<?php if ($upload['nip']) : ?>
+						<a class="nav-item nav-link" href="<?= base_url('home') ?>"><i class="fas fa-home"></i> Lihat Pengajuan</a>
+					<?php else : ?>
+						<a class="nav-item nav-link" href="<?= base_url('pegawai') ?>"><i class="fas fa-paper-plane"></i> Pengajuan Pensiun</a>
+					<?php endif; ?>
 					<a class="nav-item nav-link" onclick="return confirm('Apakah yakin ingin logout?')" href=" <?= base_url('logout') ?>"><i class="fas fa-sign-out-alt"></i> Logout
 					</a>
-
 				<?php endif;  ?>
 			</div>
 		</div>

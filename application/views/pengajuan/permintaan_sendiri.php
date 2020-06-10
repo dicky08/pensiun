@@ -9,7 +9,9 @@
 					<div class="alert alert-warning" role="alert"><i class="fas fa-exclamation-circle"></i> Upload KARPEG, SK-CPNS, SK-PNS, SK-PANGKAT TERAKHIR, SURAT KENAIKAN GAJI, SK-JABATAN TERAKHIR, SK TERAKHIR, SURAT NIKAH,AKTA KELAHIRAN, KTP SUAMI/ISTRI, KK, SK-TERAKHIR</div>
 				</em>
 			</div>
-
+			<div class="form-group">
+				<?= $this->session->flashdata('msgEror') ?>
+			</div>
 			<div class="form-group">
 				<label for="upload_file" class="mb-2">Upload File
 					<em>
