@@ -33,7 +33,7 @@ class Pengajuan_model extends CI_Model
 		$this->load->library('upload', $config);
 		if ($this->upload->do_upload($nameUpload)) {
 			$img = $this->upload->data();
-
+			var_dump($img);
 			return $img;
 			// $this->pengajuan->insert_data($namaGambar, 'pengajuan');
 		} else {
@@ -42,5 +42,14 @@ class Pengajuan_model extends CI_Model
 			$this->session->set_flashdata('msgEror', '<div class="alert alert-danger" role="alert">' . $error . '</div>');
 			redirect('permintaan_sendiri');
 		}
+	}
+
+	function joinKategori($nip)
+	{
+		$this->db->SELECT('*')
+			->FROM('pengajuan')
+			->JOIN('kategori', 'pengajuan.id_kategori=kategori.id_kategori')
+			->WHERE("pengajuan.nip=$nip");
+		return $this->db->get();
 	}
 }

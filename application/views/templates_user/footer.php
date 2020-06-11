@@ -5,9 +5,32 @@
 <script src="<?= base_url('assets/jquery-3.4.1.js') ?>"></script>
 <script src="<?= base_url('assets/popper.min.js') ?>"></script>
 <script src="<?= base_url('assets/js/bootstrap.min.js') ?>"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnify/2.3.3/js/jquery.magnify.js"></script>
 <script>
 	$(function() {
 		$('[data-toggle="popover"]').popover();
+
+		$('form').on('submit', function(e) {
+			let isi = $('#upload_file').val();
+			let isi2 = $('#upload_file2').val();
+			if (isi2 == "") {
+				alert('Kosong');
+			}
+			console.log(isi);
+
+			$.ajax({
+				url: "<?= base_url('pengajuan/ajax_upload') ?>",
+				method: "post",
+				data: new FormData(this),
+				contentType: false,
+				cache: false,
+				processData: false,
+				success: function(data) {
+
+				}
+			})
+
+		});
 	});
 </script>
 </body>

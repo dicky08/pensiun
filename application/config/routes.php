@@ -58,6 +58,7 @@ $route['janda_duda'] = 'pengajuan/janda_duda';
 $route['batas_usia'] = 'pengajuan/batas_usia';
 $route['permintaan_sendiri'] = 'pengajuan/permintaan_sendiri';
 $route['upload_data'] = 'pengajuan/upload_permintaan_sendiri';
+$route['lihat-pengajuan/(:any)'] = 'pengajuan/lihat_pengajuan/$1';
 $route['logout'] = 'auth/logout';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

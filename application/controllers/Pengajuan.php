@@ -34,22 +34,33 @@ class Pengajuan extends CI_Controller
 		$join = $this->pengajuan->getOneData(['username' => $sesi['username']], 'pegawai')->row_array();
 		$nip  = $join['nip'];
 		$data['upload'] = $this->pengajuan->getOneData(['nip' => $nip], 'pengajuan')->row_array();
+		// $a = Validasi::validate();
+		// $this->form_validation->set_rules('upload_file', 'photo', 'required', $a);
+		// $this->form_validation->set_rules('coba', 'photo', 'required', $a);
+		// $this->form_validation->set_rules('photo', 'photo', 'required', $a);
 
+		// if ($this->form_validation->run() == false) {
+		# code...
 		$data['title'] = "Upload Pengajuan Permintaan Sendiri";
 		$this->load->view('templates_user/header', $data);
 		$this->load->view('templates_user/navbar', $data);
 		$this->load->view('pengajuan/permintaan_sendiri', $data);
 		$this->load->view('templates_user/footer');
+		// }
 	}
 	public function upload_permintaan_sendiri()
 	{
 		$sesi = $this->sesi;
+		$data['sesi'] = $sesi;
 		$join = $this->pengajuan->getOneData(['username' => $sesi['username']], 'pegawai')->row_array();
 		$nip = $join['nip'];
 
 		$this->pengajuan->uploadData('pdf', 2048, 'upload_file');
+		// $this->pengajuan->uploadData('pdf', 2048, 'photo');
 
 		$nameGambar = ($_FILES['upload_file']['name']);
+		// $photo = ($_FILES['[photo]']['name']);
+		var_dump($nameGambar);
 		$upload = [
 			'tgl_pengajuan'	 	=> date('Y-m-d'),
 			'nip'				=> $nip,
@@ -62,8 +73,8 @@ class Pengajuan extends CI_Controller
 			'photo' 			=> $nameGambar,
 			'status' 			=> 'process'
 		];
-		$this->pengajuan->insert_data($upload, 'pengajuan');
-
+		var_dump($upload);
+		// $this->pengajuan->insert_data($upload, 'pengajuan');
 		$data['title'] = "Upload Pengajuan Permintaan Sendiri";
 		$this->load->view('templates_user/header', $data);
 		$this->load->view('templates_user/navbar', $data);
@@ -71,8 +82,48 @@ class Pengajuan extends CI_Controller
 		$this->load->view('templates_user/footer');
 	}
 
-	public function success()
+	public function lihat_pengajuan()
 	{
-		# code...
+		$sesi = $this->sesi;
+		$data['sesi'] = $sesi;
+		$data['pengajuan'] = $this->pengajuan->getOneData(['nip' => $sesi['nip']], 'pengajuan')->row_array();
+		$pengajuan = $data['pengajuan'];
+		$joinKategori = $this->pengajuan->joinKategori($sesi['nip'])->row_array();
+		$data['tglPengajuan'] = $joinKategori['tgl_pengajuan'];
+		$data['nip'] = $joinKategori['nip'];
+		$data['kategori'] = $joinKategori['nama_kategori'];
+		if (!isset($pengajuan['nip'])) {
+		}
+
+		$data['title'] = "Hasil Pengajuan";
+		$this->load->view('templates_user/header', $data);
+		$this->load->view('templates_user/navbar', $data);
+		$this->load->view('pengajuan/lihat_pengajuan', $data);
+		$this->load->view('templates_user/footer');
+	}
+
+	public function ajax_upload()
+	{
+
+
+		$config = [
+			'upload_path'          => './assets/img_pengajuan/permintaan_sendiri',
+			'allowed_types'        => 'pdf',
+			'max_size'             => 1024
+		];
+		$this->load->library('upload', $config);
+		for ($i = 1; $i <= 2; $i++) {
+
+			if (!empty($_FILES['upload' . $i]['name'])) {
+				if (!$this->upload->do_upload('upload' . $i)) {
+					$error = $this->upload->display_errors();
+					$this->session->set_flashdata('msgEror', '<div class="alert alert-danger" role="alert">' . $error . '</div>');
+					redirect('permintaan_sendiri');
+				} else {
+					$data = $this->upload->data();
+				}
+			}
+		}
+		echo "OKE";
 	}
 }

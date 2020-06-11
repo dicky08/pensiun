@@ -1,4 +1,4 @@
-	<br><br><br><br>
+	<br><br><br><br><br><br><br>
 	<div class="container">
 		<?php if ($pesan == "gagal") : ?>
 			<?php echo "<div class='container alert alert-danger' role='alert'>
