@@ -10,6 +10,7 @@ class Auth extends CI_Controller
 	}
 	public function index()
 	{
+		$data['sesi'] = $this->session->userdata('sesi');
 		$valid = Validasi::validate();
 		$this->form_validation->set_rules('username', 'Username', 'required|trim', $valid);
 		$this->form_validation->set_rules('password', 'Password', 'required|trim', $valid);
@@ -28,9 +29,10 @@ class Auth extends CI_Controller
 
 			if ($database) {
 				if (password_verify($pass, $database['password'])) {
-					echo "ok";
+
 					$dataSession = [
-						'username' => $username
+						'nip' 		=> $database['nip'],
+						'username'  => $username
 					];
 					$this->session->set_userdata('sesi', $dataSession);
 					echo "<script>alert('Login berhasil. Silahkan pilih jenis pensiun!')</script>";
@@ -50,6 +52,7 @@ class Auth extends CI_Controller
 
 	public function registrasi()
 	{
+		$data['sesi'] = $this->session->userdata('sesi');
 		$valid = Validasi::validate();
 		$this->form_validation->set_rules('nip', 'NIP', 'required|trim|min_length[18]|is_unique[pegawai.nip]', $valid, TRUE);
 		$this->form_validation->set_rules('nama', 'Nama', 'required|trim', $valid);
