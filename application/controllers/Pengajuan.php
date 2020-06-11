@@ -13,7 +13,7 @@ class Pengajuan extends CI_Controller
 	public function janda_duda()
 	{
 		$sesi = $this->sesi;
-		$join = $this->pengajuan->getOneData(['nip' => $sesi['nip']], 'pegawai')->row_array();
+		$join = $this->pengajuan->getOneData(['username' => $sesi['username']], 'pegawai')->row_array();
 		$data['title'] = "Upload Pengajuan Janda/Duda";
 		$this->load->view('templates_user/header', $data);
 		$this->load->view('templates_user/navbar', $data);

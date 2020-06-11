@@ -12,9 +12,11 @@ class Home extends CI_Controller
 	public function index()
 	{
 		$sesi = $this->session->userdata('sesi');
+		var_dump($sesi);
 		$join = $this->pengajuan->getOneData(['username' => $sesi['username']], 'pegawai')->row_array();
 		$nip  = $join['nip'];
-		$data['upload'] = $this->pengajuan->getOneData(['nip' => $nip], 'pengajuan')->row_array();
+		var_dump($nip);
+		$data['upload'] = $this->pengajuan->getAll('pengajuan')->result_array();
 		$data['title'] = "Dashboard";
 		$this->load->view('templates_user/header', $data);
 		$this->load->view('templates_user/navbar');
