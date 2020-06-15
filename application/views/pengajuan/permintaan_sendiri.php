@@ -1,42 +1,73 @@
-<div class="container">
 	<br><br><br>
-	<form action="<?= site_url('pengajuan/ajax_upload') ?>" method="post" enctype="multipart/form-data">
+	<div class="container mt-3">
 		<div class="row">
-			<div class="col-md-12 mt-5" style="border: 2px solid #E0FFFF;">
-				<h2 class="mt-3">Upload File</h2>
-				<div class="tampil"></div>
-				<div class="form-group mb-3">
-					<em>
-						<div class="alert alert-warning" role="alert"><i class="fas fa-exclamation-circle"></i> Upload KARPEG, SK-CPNS, SK-PNS, SK-PANGKAT TERAKHIR, SURAT KENAIKAN GAJI, SK-JABATAN TERAKHIR, SK TERAKHIR, SURAT NIKAH,AKTA KELAHIRAN, KTP SUAMI/ISTRI, KK, SK-TERAKHIR</div>
-					</em>
-				</div>
-				<div class="form-group">
-					<?= $this->session->flashdata('msgEror') ?>
-				</div>
-				<div class="form-group">
-					<?php for ($i = 1; $i <= 2; $i++) : ?>
-						<label for="upload_file" class="mb-2">Upload File KTp
-							<em>
-								<small class="text-danger"> ( *max 2 MB, Format.PDF ) Jadikan dalam 1 File pada keterangan diatas.</small>
-							</em></label>
-						<input type="file" id="upload_file" name="upload<?= $i; ?>" class="form-control" value="<?= set_value('upload_file') ?>">
-					<?php endfor; ?>
-					<?= form_error('upload_file', '<small class="text-danger">', '</small>') ?>
-				</div>
-
-
-
-
-				<div class="form-group text-right mr-5">
-					<button type="submit" name="submit" class="btn  btn-primary"><i class="fas fa-upload"></i> Upload</button>
-					<a href="" name="submit" class="btn  btn-primary"><i class="fas fa-backspace"></i> Oke</a>
-				</div>
-
-
+			<div class="col-md-12">
+				<div class="h2 ml-4">Persyaratan Pengajuan Pensiun Permintaan Sendiri : </div>
+				<ol>
+					<li>Upload Photo terbaru</li>
+					<li>Upload Kartu Pegawai</li>
+					<li>Upload SK CPNS</li>
+					<li>Upload SK PNS</li>
+					<li>Upload SK Pangkat Terakhir</li>
+					<li>Upload Surat Kenaikan Gaji Berkala Terakhir</li>
+					<li>Upload SK Jabatan Terakhir</li>
+					<li>Upload SK Terakhir ( Suami/Istri )</li>
+				</ol>
 			</div>
-
-
 		</div>
-	</form>
+	</div>
 
-</div>
+	<div class="container">
+		<form action="<?= site_url('upload_permintaan_sendiri') ?>" method="post" enctype="multipart/form-data">
+			<div class="row">
+				<div class="col-md-12" style="border: 2px solid #E0FFFF;">
+					<div class="row mt-3">
+						<div class="col-md-12">
+							<div class="alert alert-info">PASTIKAN DATA YANG DI UPLOAD SUDAH BENAR SESUAI URUTAN! Persyaratan Pengajuan Pensiun lihat diatas!</div>
+
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12">
+							<label for="upload_file" class="mb-2">Upload File Persyratan
+								<em>
+									<small class="text-danger"> ( *max 1 MB, Format. JPG | PNG | JPEG ) </small>
+								</em>
+							</label>
+							<div class="form-group">
+								<?= $this->session->flashdata('msgEror') ?>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<?php for ($i = 1; $i <= 4; $i++) : ?>
+									<input type="file" id="upload_file" name="upload_file[]" class="form-control" required>
+								<?php endfor; ?>
+								<?= form_error('upload_file', '<small class="text-danger">', '</small>') ?>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<?php for ($i = 1; $i <= 4; $i++) : ?>
+
+									<input type="file" id="upload_file" name="upload_file[]" class="form-control" required>
+								<?php endfor; ?>
+								<?= form_error('upload_file', '<small class="text-danger">', '</small>') ?>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group text-right">
+								<button type="submit" name="submit" class="btn  btn-primary"><i class="fas fa-upload"></i> Lanjutkan Upload</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>

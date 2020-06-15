@@ -48,13 +48,3 @@
 		</div>
 	</div>
 </div>
-
-<footer class="bg-secondary text-white">
-	<div class="container">
-		<div class="row text-center pt-3">
-			<div class="col">
-				<p>&copy; Copyright | 2020</p>
-			</div>
-		</div>
-	</div>
-</footer>

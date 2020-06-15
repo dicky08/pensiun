@@ -52,11 +52,27 @@ defined('BASEPATH') or exit('No direct script access allowed');
 $route['default_controller'] = 'home';
 $route['register'] = 'auth/registrasi';
 $route['login']    = 'auth';
-
 $route['pengajuan'] = 'auth';
+
+// JANDA DUDA
 $route['janda_duda'] = 'pengajuan/janda_duda';
+$route['upload_janda_duda'] = 'pengajuan/upload_janda_duda';
+$route['upload_lanjut_pengajuan_janda'] = 'pengajuan/upload_lanjut_pengajuan_janda';
+
+// BATAS USIA
 $route['batas_usia'] = 'pengajuan/batas_usia';
-$route['permintaan_sendiri'] = 'pengajuan/permintaan_sendiri';
+$route['upload-batas-usia'] = 'pengajuan/upload_batas_usia';
+$route['lanjutan_upload_batas_usia'] = 'pengajuan/upload_lanjutan_batas_usia';
+
+// PERMINTAAN SENDIRI
+$route['kemauan-sendiri'] = 'pengajuan/permintaan_sendiri';
+$route['upload_permintaan_sendiri'] = 'pengajuan/upload_permintaan_sendiri';
+$route['lanjutkan_upload'] = 'pengajuan/lanjutkan_upload';
+
+// LIHAT PENGAJUAN
+$route['lihat_pengajuan'] = 'pengajuan/lihat_pengajuan';
+
+
 $route['upload_data'] = 'pengajuan/upload_permintaan_sendiri';
 $route['lihat-pengajuan/(:any)'] = 'pengajuan/lihat_pengajuan/$1';
 $route['logout'] = 'auth/logout';

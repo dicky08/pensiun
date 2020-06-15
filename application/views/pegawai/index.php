@@ -48,7 +48,7 @@
 
 						<?php if ($pesan == "gagal") : ?>
 						<?php else : ?>
-							<a href="<?= base_url('permintaan_sendiri') ?>" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Ajukan</a>
+							<a href="<?= site_url('kemauan-sendiri') ?>" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Ajukan</a>
 						<?php endif; ?>
 					</div>
 				</div>

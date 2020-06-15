@@ -14,7 +14,7 @@
 			<form action="" method="post">
 				<div class="form-group">
 					<label for="username">Username</label>
-					<input type="text" placeholder="Enter Username" id="username" name="username" class="form-control">
+					<input type="text" placeholder="Enter Username" id="username" name="username" class="form-control" autofocus>
 					<?= form_error('username', '<small class="text-danger">', '</small>') ?>
 				</div>
 				<div class="form-group">
@@ -30,3 +30,4 @@
 		</div>
 	</div>
 </div>
+<br><br><br><br>

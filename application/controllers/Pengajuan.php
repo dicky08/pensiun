@@ -10,9 +10,15 @@ class Pengajuan extends CI_Controller
 		$this->load->model('pengajuan_model', 'pengajuan');
 		$this->sesi = $this->session->userdata('sesi');
 	}
+
+	public function index()
+	{
+		redirect('pegawai');
+	}
 	public function janda_duda()
 	{
 		$sesi = $this->sesi;
+		$data['sesi'] = $sesi;
 		$join = $this->pengajuan->getOneData(['username' => $sesi['username']], 'pegawai')->row_array();
 		$data['title'] = "Upload Pengajuan Janda/Duda";
 		$this->load->view('templates_user/header', $data);
@@ -20,81 +26,272 @@ class Pengajuan extends CI_Controller
 		$this->load->view('pengajuan/janda_duda', $data);
 		$this->load->view('templates_user/footer');
 	}
+
+	public function upload_janda_duda()
+	{
+		$sesi = $this->sesi;
+		$data['sesi'] = $sesi;
+
+		$gbr = $this->pengajuan->uploadFIle('upload_file', 'janda_duda', "./assets/img-pengajuan/janda_duda/");
+		$upload = [
+			'tgl_pengajuan'	 		=> date('Y-m-d'),
+			'nip'					=> $sesi['nip'],
+			'id_kategori'			=> 1,
+			'id_admin'				=> 0,
+			'photo'					=> $gbr[0],
+			'karpeg'				=> $gbr[1],
+			'sk_cpns'				=> $gbr[2],
+			'sk_pns'				=> $gbr[3],
+			'sk_pangkat_terakhir' 	=> $gbr[4],
+			'kenaikan_gaji_terakhir' => $gbr[5],
+			'jabatan_terakhir' 		=> $gbr[6],
+			'sk_terakhir' 			=> $gbr[7]
+		];
+		$this->pengajuan->insert_data($upload, 'pengajuan_pensiun');
+		$this->session->set_flashdata('msgOke', '<div class="alert alert-success" role="alert">Upload berhasil. </div>');
+
+		$sesi = $this->sesi;
+		$data['sesi'] = $sesi;
+		$nip = $this->pengajuan->getOneData(['nip' => $sesi['nip']], 'pengajuan_pensiun')->row_array();
+		$data['nip'] = $nip;
+
+		$data['title'] = "Upload Pengajuan ";
+		$this->load->view('templates_user/header', $data);
+		$this->load->view('templates_user/navbar', $data);
+		$this->load->view('pengajuan/lanjut_pengajuan_janda_duda', $data);
+		$this->load->view('templates_user/footer');
+	}
+
+	public function view_lanjutan_pengajuan_janda_duda()
+	{
+		$sesi = $this->sesi;
+		$data['sesi'] = $sesi;
+		$nip = $this->pengajuan->getOneData(['nip' => $sesi['nip']], 'pengajuan_pensiun')->row_array();
+		$data['nip'] = $nip;
+
+		$data['title'] = "Upload Pengajuan Janda Duda";
+		$this->load->view('templates_user/header', $data);
+		$this->load->view('templates_user/navbar', $data);
+		$this->load->view('pengajuan/lanjut_pengajuan_janda_duda', $data);
+		$this->load->view('templates_user/footer');
+	}
+
+	public function upload_lanjut_pengajuan_janda()
+	{
+		$sesi = $this->sesi;
+		$data['sesi'] = $sesi;
+
+		$gbr = $this->pengajuan->uploadFIle('upload_file', 'view_lanjutan_pengajuan_janda_duda', "./assets/img-pengajuan/janda_duda/");
+
+		$nip = $this->input->post('nip');
+		$where = ['nip' => $nip];
+		$uploadLanjutan = [
+			'sasaran_kinerja'	=> $gbr[0],
+			'ktp'				=> $gbr[1],
+			'surat_nikah'		=> $gbr[2],
+			'kartu_keluarga'	=> $gbr[3],
+			'akta_kelahiran' 	=> $gbr[4],
+			'surat_kuliah_anak' => $gbr[5],
+			'surat_kematian' 	=> $gbr[6],
+			'surat_janda_duda' 	=> $gbr[7],
+			'status' 			=> 'proccess'
+		];
+		$this->pengajuan->update_data($where, $uploadLanjutan, 'pengajuan_pensiun');
+		$this->session->set_flashdata('msgOke', '<div class="alert alert-success" role="alert">Upload berhasil. Tahp selanjutnya tinggal menunggu konfirmasi dari admin &#177; selama 5 bulan terhitung mulai dari tanggal pengajuan sekarang! </div>');
+
+		redirect('lihat_pengajuan');
+	}
+
 	public function batas_usia()
 	{
-		$data['title'] = "Upload Pengajuan Janda/Duda";
+		$sesi = $this->sesi;
+		$data['sesi'] = $sesi;
+		$data['title'] = "Upload Pengajuan Batas Usia";
 		$this->load->view('templates_user/header', $data);
 		$this->load->view('templates_user/navbar', $data);
 		$this->load->view('pengajuan/batas_usia', $data);
 		$this->load->view('templates_user/footer');
 	}
+
+	public function upload_batas_usia()
+	{
+		$sesi = $this->sesi;
+		$data['sesi'] = $sesi;
+
+		$gbr = $this->pengajuan->uploadFIle('upload_file', 'batas_usia', "./assets/img-pengajuan/batas_usia/");
+		$upload = [
+			'tgl_pengajuan'	 		=> date('Y-m-d'),
+			'nip'					=> $sesi['nip'],
+			'id_kategori'			=> 2,
+			'id_admin'				=> 0,
+			'photo'					=> $gbr[0],
+			'karpeg'				=> $gbr[1],
+			'sk_cpns'				=> $gbr[2],
+			'sk_pns'				=> $gbr[3],
+			'sk_pangkat_terakhir' 	=> $gbr[4],
+			'kenaikan_gaji_terakhir' => $gbr[5],
+			'jabatan_terakhir' 		=> $gbr[6],
+			'sk_terakhir' 			=> $gbr[7]
+		];
+		$this->pengajuan->insert_data($upload, 'pengajuan_pensiun');
+		$this->session->set_flashdata('msgOke', '<div class="alert alert-success" role="alert">Upload berhasil. </div>');
+		redirect('pengajuan/view_lanjutan_batas_usia');
+	}
+
+	public function view_lanjutan_batas_usia()
+	{
+		$sesi = $this->sesi;
+		$data['sesi'] = $sesi;
+		$nip = $this->pengajuan->getOneData(['nip' => $sesi['nip']], 'pengajuan_pensiun')->row_array();
+		$data['nip'] = $nip;
+
+		$data['title'] = "Upload Lanjutan Batas Usia";
+		$this->load->view('templates_user/header', $data);
+		$this->load->view('templates_user/navbar', $data);
+		$this->load->view('pengajuan/view_lanjutan_batas_usia', $data);
+		$this->load->view('templates_user/footer');
+	}
+
+	public function upload_lanjutan_batas_usia()
+	{
+		$sesi = $this->sesi;
+		$data['sesi'] = $sesi;
+
+		$gbr = $this->pengajuan->uploadFIle('upload_file', 'view_lanjutan_batas_usia', "./assets/img-pengajuan/batas_usia/");
+
+		$nip = $this->input->post('nip');
+		$where = ['nip' => $nip];
+		$uploadLanjutan = [
+			'sasaran_kinerja'	=> $gbr[0],
+			'ktp'				=> $gbr[1],
+			'surat_nikah'		=> $gbr[2],
+			'kartu_keluarga'	=> $gbr[3],
+			'akta_kelahiran' 	=> $gbr[4],
+			'surat_kuliah_anak' => $gbr[5],
+			'surat_kematian' 	=> $gbr[6],
+			'surat_janda_duda' 	=> $gbr[7],
+			'status' 			=> 'proccess'
+		];
+		$this->pengajuan->update_data($where, $uploadLanjutan, 'pengajuan_pensiun');
+		$this->session->set_flashdata('msgOke', '<div class="alert alert-success" role="alert">Upload berhasil. Tahp selanjutnya tinggal menunggu konfirmasi dari admin &#177; selama 5 bulan terhitung mulai dari tanggal pengajuan sekarang! </div>');
+		redirect('pengajuan/lihat_pengajuan');
+	}
 	public function permintaan_sendiri()
 	{
 		$sesi = $this->sesi;
-		$join = $this->pengajuan->getOneData(['username' => $sesi['username']], 'pegawai')->row_array();
-		$nip  = $join['nip'];
-		$data['upload'] = $this->pengajuan->getOneData(['nip' => $nip], 'pengajuan')->row_array();
-		// $a = Validasi::validate();
-		// $this->form_validation->set_rules('upload_file', 'photo', 'required', $a);
-		// $this->form_validation->set_rules('coba', 'photo', 'required', $a);
-		// $this->form_validation->set_rules('photo', 'photo', 'required', $a);
+		$data['sesi'] = $sesi;
 
-		// if ($this->form_validation->run() == false) {
-		# code...
 		$data['title'] = "Upload Pengajuan Permintaan Sendiri";
 		$this->load->view('templates_user/header', $data);
 		$this->load->view('templates_user/navbar', $data);
 		$this->load->view('pengajuan/permintaan_sendiri', $data);
 		$this->load->view('templates_user/footer');
-		// }
 	}
+
 	public function upload_permintaan_sendiri()
 	{
 		$sesi = $this->sesi;
 		$data['sesi'] = $sesi;
-		$join = $this->pengajuan->getOneData(['username' => $sesi['username']], 'pegawai')->row_array();
-		$nip = $join['nip'];
 
-		$this->pengajuan->uploadData('pdf', 2048, 'upload_file');
-		// $this->pengajuan->uploadData('pdf', 2048, 'photo');
-
-		$nameGambar = ($_FILES['upload_file']['name']);
-		// $photo = ($_FILES['[photo]']['name']);
-		var_dump($nameGambar);
+		$gbr = $this->pengajuan->uploadFIle('upload_file', 'permintaan_sendiri', "./assets/img-pengajuan/permintaan-sendiri/");
 		$upload = [
-			'tgl_pengajuan'	 	=> date('Y-m-d'),
-			'nip'				=> $nip,
-			'id_kategori'		=> 3,
-			'id_admin'			=> 0,
-			'upload_file'		=> $nameGambar,
-			'surat_kematian'	=> 'null',
-			'surat_janda_duda'	=> 'null',
-			'surat_kuliah_anak'	=> 'null',
-			'photo' 			=> $nameGambar,
-			'status' 			=> 'process'
+			'tgl_pengajuan'	 		=> date('Y-m-d'),
+			'nip'					=> $sesi['nip'],
+			'id_kategori'			=> 3,
+			'id_admin'				=> 0,
+			'photo'					=> $gbr[0],
+			'karpeg'				=> $gbr[1],
+			'sk_cpns'				=> $gbr[2],
+			'sk_pns'				=> $gbr[3],
+			'sk_pangkat_terakhir' 	=> $gbr[4],
+			'kenaikan_gaji_terakhir' => $gbr[5],
+			'jabatan_terakhir' 		=> $gbr[6],
+			'sk_terakhir' 			=> $gbr[7]
 		];
-		var_dump($upload);
-		// $this->pengajuan->insert_data($upload, 'pengajuan');
+		$this->pengajuan->insert_data($upload, 'pengajuan_pensiun');
+		$this->session->set_flashdata('msgOke', '<div class="alert alert-success" role="alert">Upload berhasil. </div>');
+		redirect('pengajuan/upload_lanjutan');
+	}
+
+	public function upload_lanjutan()
+	{
+		$sesi = $this->sesi;
+		$data['sesi'] = $sesi;
+		$nip = $this->pengajuan->getOneData(['nip' => $sesi['nip']], 'pengajuan_pensiun')->row_array();
+		$data['nip'] = $nip;
+
 		$data['title'] = "Upload Pengajuan Permintaan Sendiri";
 		$this->load->view('templates_user/header', $data);
 		$this->load->view('templates_user/navbar', $data);
-		$this->load->view('pengajuan/selesai', $data);
+		$this->load->view('pengajuan/lanjutkan_pengajuan', $data);
 		$this->load->view('templates_user/footer');
 	}
+	public function lanjutkan_upload()
+	{
+		$sesi = $this->sesi;
+		$data['sesi'] = $sesi;
 
+		$gbr = $this->pengajuan->uploadFIle('upload_file', 'upload_lanjutan', "./assets/img-pengajuan/permintaan-sendiri/");
+
+		$nip = $this->input->post('nip');
+		$where = ['nip' => $nip];
+		$uploadLanjutan = [
+			'sasaran_kinerja'	=> $gbr[0],
+			'ktp'				=> $gbr[1],
+			'surat_nikah'		=> $gbr[2],
+			'kartu_keluarga'	=> $gbr[3],
+			'akta_kelahiran' 	=> $gbr[4],
+			'surat_kuliah_anak' => 'null',
+			'surat_kematian' 	=> 'null',
+			'surat_janda_duda' 	=> 'null',
+			'status' 			=> 'proccess'
+		];
+		$this->pengajuan->update_data($where, $uploadLanjutan, 'pengajuan_pensiun');
+		$this->session->set_flashdata('msgOke', '<div class="alert alert-success" role="alert">Upload berhasil. Tahp selanjutnya tinggal menunggu konfirmasi dari admin &#177; selama 5 bulan terhitung mulai dari tanggal pengajuan sekarang! </div>');
+		redirect('pengajuan/lihat_pengajuan');
+	}
 	public function lihat_pengajuan()
 	{
 		$sesi = $this->sesi;
 		$data['sesi'] = $sesi;
-		$data['pengajuan'] = $this->pengajuan->getOneData(['nip' => $sesi['nip']], 'pengajuan')->row_array();
+		$data['pengajuan'] = $this->pengajuan->getOneData(['nip' => $sesi['nip']], 'pengajuan_pensiun')->row_array();
 		$pengajuan = $data['pengajuan'];
+
 		$joinKategori = $this->pengajuan->joinKategori($sesi['nip'])->row_array();
-		$data['tglPengajuan'] = $joinKategori['tgl_pengajuan'];
-		$data['nip'] = $joinKategori['nip'];
-		$data['kategori'] = $joinKategori['nama_kategori'];
-		if (!isset($pengajuan['nip'])) {
+		$data['kategori'] 				= $joinKategori;
+		$data['tglPengajuan'] 			= $joinKategori['tgl_pengajuan'];
+		$data['nip'] 					= $joinKategori['nip'];
+		$data['idKategori'] 			= $joinKategori['id_kategori'];
+		$data['nama'] 					= $sesi['nama'];
+		$data['kategori'] 				= $joinKategori['nama_kategori'];
+		$data['photo'] 					= $joinKategori['photo'];
+		$data['karpeg'] 				= $joinKategori['karpeg'];
+		$data['sk_cpns'] 				= $joinKategori['sk_cpns'];
+		$data['sk_pns'] 				= $joinKategori['sk_pns'];
+		$data['sk_pangkat_terakhir']	= $joinKategori['sk_pangkat_terakhir'];
+		$data['kenaikan_gaji_terakhir'] = $joinKategori['kenaikan_gaji_terakhir'];
+		$data['kenaikan_gaji_terakhir'] = $joinKategori['kenaikan_gaji_terakhir'];
+		$data['jabatan_terakhir'] 		= $joinKategori['jabatan_terakhir'];
+		$data['sk_terakhir'] 			= $joinKategori['sk_terakhir'];
+		$data['sasaran_kinerja'] 		= $joinKategori['sasaran_kinerja'];
+		$data['ktp'] 					= $joinKategori['ktp'];
+		$data['surat_nikah'] 			= $joinKategori['surat_nikah'];
+		$data['kartu_keluarga'] 		= $joinKategori['kartu_keluarga'];
+		$data['akta_kelahiran'] 		= $joinKategori['akta_kelahiran'];
+
+		$data['urlImage'] = '';
+		if ($data['idKategori'] == 1) {
+			$data['urlImage'] = 'assets/img-pengajuan/janda_duda/';
+		} elseif ($data['idKategori'] == 2) {
+			$data['urlImage'] = 'assets/img-pengajuan/batas_usia/';
+		} else {
+			$data['urlImage'] = 'assets/img-pengajuan/permintaan-sendiri/';
 		}
 
+		if (!isset($joinKategori)) {
+			# code...
+			redirect('pegawai');
+		}
 		$data['title'] = "Hasil Pengajuan";
 		$this->load->view('templates_user/header', $data);
 		$this->load->view('templates_user/navbar', $data);
@@ -102,28 +299,14 @@ class Pengajuan extends CI_Controller
 		$this->load->view('templates_user/footer');
 	}
 
-	public function ajax_upload()
+	public function cetakSKPensiun()
 	{
+		$mpdf = new \Mpdf\Mpdf();
 
+		// Write some HTML code:
+		$mpdf->WriteHTML('Hello World');
 
-		$config = [
-			'upload_path'          => './assets/img_pengajuan/permintaan_sendiri',
-			'allowed_types'        => 'pdf',
-			'max_size'             => 1024
-		];
-		$this->load->library('upload', $config);
-		for ($i = 1; $i <= 2; $i++) {
-
-			if (!empty($_FILES['upload' . $i]['name'])) {
-				if (!$this->upload->do_upload('upload' . $i)) {
-					$error = $this->upload->display_errors();
-					$this->session->set_flashdata('msgEror', '<div class="alert alert-danger" role="alert">' . $error . '</div>');
-					redirect('permintaan_sendiri');
-				} else {
-					$data = $this->upload->data();
-				}
-			}
-		}
-		echo "OKE";
+		// Output a PDF file directly to the browser
+		$mpdf->Output();
 	}
 }

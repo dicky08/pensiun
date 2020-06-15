@@ -32,6 +32,7 @@ class Auth extends CI_Controller
 
 					$dataSession = [
 						'nip' 		=> $database['nip'],
+						'nama'	 	=> $database['nama'],
 						'username'  => $username
 					];
 					$this->session->set_userdata('sesi', $dataSession);

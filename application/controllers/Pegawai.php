@@ -15,7 +15,7 @@ class Pegawai extends CI_Controller
 		$sesi = $this->sesi;
 		$data['sesi'] = $sesi;
 		$pegawai   = $this->pengajuan->getOneData(['username' => $sesi['username']], 'pegawai')->row_array();
-		$data['pengajuan'] = $this->pengajuan->getOneData(['nip' => $pegawai['nip']], 'pengajuan')->row_array();
+		$data['pengajuan'] = $this->pengajuan->getOneData(['nip' => $pegawai['nip']], 'pengajuan_pensiun')->row_array();
 		$pengajuan = $data['pengajuan'];
 		if (isset($pengajuan['nip'])) {
 
