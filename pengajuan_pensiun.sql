@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2020 at 04:30 PM
+-- Generation Time: Jun 18, 2020 at 02:16 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -72,7 +72,7 @@ CREATE TABLE `kategori` (
 
 INSERT INTO `kategori` (`id_kategori`, `nama_kategori`) VALUES
 (1, 'janda/duda'),
-(2, 'batas usia pensiun'),
+(2, 'batas usia'),
 (3, 'permintaan sendiri');
 
 -- --------------------------------------------------------
@@ -84,9 +84,19 @@ INSERT INTO `kategori` (`id_kategori`, `nama_kategori`) VALUES
 CREATE TABLE `pegawai` (
   `nip` char(18) NOT NULL,
   `nama` varchar(128) NOT NULL,
+  `tgl_lahir` date NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pegawai`
+--
+
+INSERT INTO `pegawai` (`nip`, `nama`, `tgl_lahir`, `username`, `password`) VALUES
+('321513080296000112', 'Tete Setia', '2020-12-11', 'tete08', '$2y$10$GS8L5dEccgBM5ldXC3sEo.WdLOkkEi9dmi/Qw1.vGnrI3YyhCvAia'),
+('321513080296000113', 'Tete Setia2', '2020-12-12', 'tete09', '$2y$10$LHPk2ojBzpO7W42FfJ9cBeFbF/YQqfORC1N4l6mGMR4WyQa9/l2rO'),
+('321513080296000114', 'Tete Setia3', '2020-12-18', 'tete07', '$2y$10$GyFK76HfkCWYT6xemiPgQedHOG8IZqY3p4yFvaYP7wmR/C9oQS17e');
 
 -- --------------------------------------------------------
 
@@ -112,22 +122,54 @@ INSERT INTO `pegawai2` (`nip`, `nama`, `tempat_lahir`, `tgl_lahir`, `jenis_kelam
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pengajuan_janda_duda`
+-- Table structure for table `pengajuan_pensiun`
 --
 
-CREATE TABLE `pengajuan_janda_duda` (
+CREATE TABLE `pengajuan_pensiun` (
   `id` int(11) NOT NULL,
   `tgl_pengajuan` date NOT NULL,
   `nip` char(18) NOT NULL,
   `id_kategori` int(11) NOT NULL,
   `id_admin` int(11) NOT NULL,
-  `upload_fotocopy` varchar(128) NOT NULL,
+  `photo` varchar(128) NOT NULL,
+  `karpeg` varchar(128) NOT NULL,
+  `sk_cpns` varchar(128) NOT NULL,
+  `sk_pns` varchar(128) NOT NULL,
+  `sk_pangkat_terakhir` varchar(128) NOT NULL,
+  `kenaikan_gaji_terakhir` varchar(128) NOT NULL,
+  `jabatan_terakhir` varchar(128) NOT NULL,
+  `sk_terakhir` varchar(128) NOT NULL,
+  `sasaran_kinerja` varchar(128) NOT NULL,
+  `ktp` varchar(128) NOT NULL,
+  `surat_nikah` varchar(128) NOT NULL,
+  `kartu_keluarga` varchar(128) NOT NULL,
+  `akta_kelahiran` varchar(128) NOT NULL,
+  `surat_kuliah_anak` varchar(128) NOT NULL,
   `surat_kematian` varchar(128) NOT NULL,
   `surat_janda_duda` varchar(128) NOT NULL,
-  `surat_kuliah_anak` varchar(128) NOT NULL,
-  `photo` varchar(255) NOT NULL,
   `status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pengajuan_pensiun`
+--
+
+INSERT INTO `pengajuan_pensiun` (`id`, `tgl_pengajuan`, `nip`, `id_kategori`, `id_admin`, `photo`, `karpeg`, `sk_cpns`, `sk_pns`, `sk_pangkat_terakhir`, `kenaikan_gaji_terakhir`, `jabatan_terakhir`, `sk_terakhir`, `sasaran_kinerja`, `ktp`, `surat_nikah`, `kartu_keluarga`, `akta_kelahiran`, `surat_kuliah_anak`, `surat_kematian`, `surat_janda_duda`, `status`) VALUES
+(26, '2020-06-13', '321513080296000112', 3, 0, '5ee4d9693107a.jpg', '5ee4d969314ba.jpg', '5ee4d96931904.jpg', '5ee4d96931d54.png', '5ee4d9693249b.png', '5ee4d969329e2.png', '5ee4d96932e1e.png', '5ee4d96933259.png', '5ee4d98b0bd3b.png', '5ee4d98b0c343.png', '5ee4d98b0c8d9.png', '5ee4d98b0cefa.png', '5ee4d98b0d44e.png', 'null', 'null', 'null', 'proccess');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `upload`
+--
+
+CREATE TABLE `upload` (
+  `id` int(11) NOT NULL,
+  `nip` char(18) NOT NULL,
+  `img1` varchar(128) NOT NULL,
+  `img2` varchar(128) NOT NULL,
+  `img3` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
@@ -158,11 +200,17 @@ ALTER TABLE `pegawai2`
   ADD PRIMARY KEY (`nip`);
 
 --
--- Indexes for table `pengajuan_janda_duda`
+-- Indexes for table `pengajuan_pensiun`
 --
-ALTER TABLE `pengajuan_janda_duda`
+ALTER TABLE `pengajuan_pensiun`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `nip` (`nip`);
+
+--
+-- Indexes for table `upload`
+--
+ALTER TABLE `upload`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -187,9 +235,15 @@ ALTER TABLE `kategori`
   MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `pengajuan_janda_duda`
+-- AUTO_INCREMENT for table `pengajuan_pensiun`
 --
-ALTER TABLE `pengajuan_janda_duda`
+ALTER TABLE `pengajuan_pensiun`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `upload`
+--
+ALTER TABLE `upload`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
