@@ -151,4 +151,13 @@ class Pengajuan_model extends CI_Model
 			->WHERE("pengajuan_pensiun.nip", $nip);
 		return $this->db->get();
 	}
+	function joinPengajuanPegawaiKategori()
+	{
+		$this->db->SELECT('*')
+			->FROM('pengajuan_pensiun')
+			->JOIN('pegawai', "pengajuan_pensiun.nip=pegawai.nip")
+			->JOIN('kategori', 'kategori.id_kategori=pengajuan_pensiun.id_kategori')
+			->ORDER_BY('pengajuan_pensiun.tgl_pengajuan', 'ASC');
+		return $this->db->get();
+	}
 }

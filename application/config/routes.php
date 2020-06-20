@@ -50,6 +50,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'home';
+
+// ADMIN
+$route['admin'] = 'admin';
+$route['data-pegawai'] = 'admin/data_pegawai';
+$route['data-pengajuan-all'] = 'admin/data_pengajuan_all';
+$route['list_jd'] = 'admin/janda_duda';
+$route['list_bu'] = 'admin/batas_usia';
+$route['list_ps'] = 'admin/permintaan_sendiri';
+
+
 $route['register'] = 'auth/registrasi';
 $route['login']    = 'auth';
 $route['pengajuan'] = 'auth';

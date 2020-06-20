@@ -270,7 +270,6 @@ class Pengajuan extends CI_Controller
 		$data['sk_pns'] 				= $joinKategori['sk_pns'];
 		$data['sk_pangkat_terakhir']	= $joinKategori['sk_pangkat_terakhir'];
 		$data['kenaikan_gaji_terakhir'] = $joinKategori['kenaikan_gaji_terakhir'];
-		$data['kenaikan_gaji_terakhir'] = $joinKategori['kenaikan_gaji_terakhir'];
 		$data['jabatan_terakhir'] 		= $joinKategori['jabatan_terakhir'];
 		$data['sk_terakhir'] 			= $joinKategori['sk_terakhir'];
 		$data['sasaran_kinerja'] 		= $joinKategori['sasaran_kinerja'];
@@ -303,10 +302,10 @@ class Pengajuan extends CI_Controller
 	{
 		$mpdf = new \Mpdf\Mpdf();
 
-		// Write some HTML code:
+
 		$mpdf->WriteHTML('Hello World');
 
-		// Output a PDF file directly to the browser
-		$mpdf->Output();
+
+		$mpdf->Output('test.pdf', 'I');
 	}
 }
