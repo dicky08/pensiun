@@ -37,7 +37,7 @@ class Pengajuan extends CI_Controller
 			'tgl_pengajuan'	 		=> date('Y-m-d'),
 			'nip'					=> $sesi['nip'],
 			'id_kategori'			=> 1,
-			'id_admin'				=> 0,
+			'id_admin'				=> 1,
 			'photo'					=> $gbr[0],
 			'karpeg'				=> $gbr[1],
 			'sk_cpns'				=> $gbr[2],
@@ -123,7 +123,7 @@ class Pengajuan extends CI_Controller
 			'tgl_pengajuan'	 		=> date('Y-m-d'),
 			'nip'					=> $sesi['nip'],
 			'id_kategori'			=> 2,
-			'id_admin'				=> 0,
+			'id_admin'				=> 1,
 			'photo'					=> $gbr[0],
 			'karpeg'				=> $gbr[1],
 			'sk_cpns'				=> $gbr[2],
@@ -198,7 +198,7 @@ class Pengajuan extends CI_Controller
 			'tgl_pengajuan'	 		=> date('Y-m-d'),
 			'nip'					=> $sesi['nip'],
 			'id_kategori'			=> 3,
-			'id_admin'				=> 0,
+			'id_admin'				=> 1,
 			'photo'					=> $gbr[0],
 			'karpeg'				=> $gbr[1],
 			'sk_cpns'				=> $gbr[2],
@@ -256,6 +256,8 @@ class Pengajuan extends CI_Controller
 		$data['sesi'] = $sesi;
 		$data['pengajuan'] = $this->pengajuan->getOneData(['nip' => $sesi['nip']], 'pengajuan_pensiun')->row_array();
 		$pengajuan = $data['pengajuan'];
+		$data['status'] = $pengajuan['status'];
+
 
 		$joinKategori = $this->pengajuan->joinKategori($sesi['nip'])->row_array();
 		$data['kategori'] 				= $joinKategori;
@@ -277,6 +279,10 @@ class Pengajuan extends CI_Controller
 		$data['surat_nikah'] 			= $joinKategori['surat_nikah'];
 		$data['kartu_keluarga'] 		= $joinKategori['kartu_keluarga'];
 		$data['akta_kelahiran'] 		= $joinKategori['akta_kelahiran'];
+		$data['surat_kuliah_anak'] 		= $joinKategori['surat_kuliah_anak'];
+		$data['surat_kuliah_anak'] 		= $joinKategori['surat_kuliah_anak'];
+		$data['surat_kematian'] 		= $joinKategori['surat_kematian'];
+		$data['surat_janda_duda'] 		= $joinKategori['surat_janda_duda'];
 
 		$data['urlImage'] = '';
 		if ($data['idKategori'] == 1) {
@@ -302,10 +308,10 @@ class Pengajuan extends CI_Controller
 	{
 		$mpdf = new \Mpdf\Mpdf();
 
-
-		$mpdf->WriteHTML('Hello World');
-
-
-		$mpdf->Output('test.pdf', 'I');
+		$data['judul'] = "Data Pensiun";
+		$mpdf->addPage('L');
+		$html = $this->load->view('pengajuan/cetak_sk', $data, TRUE);
+		$mpdf->WriteHtml($html);
+		$mpdf->Output();
 	}
 }

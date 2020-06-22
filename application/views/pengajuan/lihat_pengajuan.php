@@ -49,13 +49,13 @@
 					<th>Surat Nikah</th>
 					<th>Kartu Keluarga</th>
 					<th>Akta Kelahiran</th>
+					<th>Surat Kuliah Anak</th>
+					<th>Surat Kematian</th>
+					<th>Surat Janda/Duda</th>
 
 				</tr>
 			</thead>
 			<tbod>
-
-
-
 
 				<tr>
 					<td>1</td>
@@ -73,13 +73,23 @@
 					<td><a href="<?= base_url($urlImage . $surat_nikah); ?>" target="_blank"> <img src="<?= base_url($urlImage . $surat_nikah); ?>" width="80px;" height="80px"></a></td>
 					<td><a href="<?= base_url($urlImage . $kartu_keluarga); ?>" target="_blank"> <img src="<?= base_url($urlImage . $kartu_keluarga); ?>" width="80px;" height="80px"></a></td>
 					<td><a href="<?= base_url($urlImage . $akta_kelahiran); ?>" target="_blank"> <img src="<?= base_url($urlImage . $akta_kelahiran); ?>" width="80px;" height="80px"></a></td>
+
+					<td><a href="<?= base_url($urlImage . $surat_kuliah_anak); ?>" target="_blank"> <img src="<?= base_url($urlImage . $surat_kuliah_anak); ?>" width="80px;" height="80px"></a></td>
+					<td><a href="<?= base_url($urlImage . $surat_kematian); ?>" target="_blank"> <img src="<?= base_url($urlImage . $surat_kematian); ?>" width="80px;" height="80px"></a></td>
+					<td><a href="<?= base_url($urlImage . $surat_janda_duda); ?>" target="_blank"> <img src="<?= base_url($urlImage . $surat_janda_duda); ?>" width="80px;" height="80px"></a></td>
 				</tr>
 			</tbod>
 		</table>
 	</div>
 </div>
 <div class="container">
-	<a href="<?= site_url('pengajuan/cetakSKPensiun'); ?>" class="btn btn-primary" target="_blank">Cetak</a>
-
+	<?php if ($status == "proccess") : ?>
+		<div class="alert alert-info text-center">Menunggu Konfirmasi</div>
+	<?php elseif ($status == "gagal") : ?>
+		<div style="text-align: center; font-size: 24px; letter-spacing: 1px;" class="alert alert-danger">Mohon Maaf Pengajuan anda gagal! Silahkan lakukan pengajuan sesuai dengan peraturan yang tertulis.</div>
+	<?php else : ?>
+		<a href="<?= site_url('pengajuan/cetakSKPensiun'); ?>" class="btn btn-primary" target="_blank"><i class="fa fa-print"></i> Cetak SK</a>
+	<?php endif; ?>
 </div>
+
 <br><br><br><br><br><br>

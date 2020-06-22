@@ -53,11 +53,15 @@ $route['default_controller'] = 'home';
 
 // ADMIN
 $route['admin'] = 'admin';
+$route['adminLogin'] = 'admin/login';
+$route['adminLogout'] = 'admin/logout';
+$route['dashboard'] = 'admin/dashboard';
 $route['data-pegawai'] = 'admin/data_pegawai';
 $route['data-pengajuan-all'] = 'admin/data_pengajuan_all';
 $route['list_jd'] = 'admin/janda_duda';
 $route['list_bu'] = 'admin/batas_usia';
 $route['list_ps'] = 'admin/permintaan_sendiri';
+$route['cancel'] = 'admin/cancel';
 
 
 $route['register'] = 'auth/registrasi';
