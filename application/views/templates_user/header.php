@@ -10,6 +10,10 @@
 	<link href="https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="<?= base_url('assets/css/user.css') ?>">
 	<style>
+		html {
+    scroll-behavior: smooth;
+}
+
 		.cursor {
 			cursor: pointer;
 		}

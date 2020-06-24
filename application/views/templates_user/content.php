@@ -2,13 +2,13 @@
 	<div class="carousel-inner">
 		<div class="carousel-item active">
 			<div class="carousel-caption d-none d-md-block slide">
-				<h2 style="margin-top: -50px;">Yuk Siapkan Pensiun!</h2>
+				<h2 style="margin-top: -50px;">Yuk Ajukan Pensiun!</h2>
 				<p>Jangan lupa siapkan persyaratannya!.</p>
 			</div>
-			<img src="<?= base_url('assets/img/pensiun7.jpg') ?>" class="d-block w-100" height="700" alt="...">
+			<img src="<?= base_url('assets/img/slider1.jpg') ?>" class="d-block w-100" height="700" alt="...">
 		</div>
 		<div class="carousel-item">
-			<img src="<?= base_url('assets/img/pensiun8.jpg') ?>" class="d-block w-100" height="700" alt="...">
+			<img src="<?= base_url('assets/img/slider2.jpg') ?>" class="d-block w-100" height="700" alt="...">
 		</div>
 
 	</div>
@@ -21,30 +21,38 @@
 		<span class="sr-only">Next</span>
 	</a>
 </div>
+<section id="alur">
 <div class="container mb-5">
 	<div class="row mt-5">
-		<div class="col-md-4">
-			<img src="<?= base_url('assets/img/pensiun1.jpg') ?>" class="card-img-top" alt="...">
+		<div class="col-md-3">
+			<img src="<?= base_url('assets/img/baca.jpg') ?>" class="" alt="...">
 			<div class="card-body">
-				<h5 class="card-title"><i class="fas fa-sync"></i> Alur Pendaftaran</h5>
-				<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-				<a href="" style="text-decoration: none;">See more <i class="fa fa-angle-double-right"></i></a>
+				<h5 class="card-title"><i class="fas fa-sync"></i> Registrasi</h5>
+				<p class="card-text">Lakukan pendaftaran untuk masuk melakukan pengajuan.</p>
 			</div>
 		</div>
 
-		<div class="col-md-4">
-			<img src="<?= base_url('assets/img/pensiun1.jpg') ?>" class="card-img-top" alt="...">
+		<div class="col-md-3">
+			<img src="<?= base_url('assets/img/login.png') ?>" class="" alt="...">
 			<div class="card-body">
-				<h5 class="card-title"><i class="fas fa-paper-plane"></i> Pengajuan</h5>
-				<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+				<h5 class="card-title"><i class="fas fa-sign-in-alt"></i> Login</h5>
+				<p class="card-text">Setelah mendaftar silahkan login menggunakan akun yang telah didaftarkan.</p>
 			</div>
 		</div>
-		<div class="col-md-4">
-			<img src="<?= base_url('assets/img/pensiun1.jpg') ?>" class="card-img-top" alt="...">
+		<div class="col-md-3">
+			<img src="<?= base_url('assets/img/pengajuan.png') ?>" class="" alt="...">
 			<div class="card-body">
-				<h5 class="card-title"><i class="fa fa-list-alt"></i> Pengecekan Persyaratan</h5>
-				<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+				<h5 class="card-title"><i class="fa fa-paper-plane"></i> Lakukan Pengajuan</h5>
+				<p class="card-text">Lakukan pengajuan pensiun.</p>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<img src="<?= base_url('assets/img/upload.png') ?>" class="" alt="...">
+			<div class="card-body">
+				<h5 class="card-title"><i class="fa fa-upload"></i> Upload Berkas</h5>
+				<p class="card-text">Upload berkas persyaratan pengajuan pensiun dan proses selesai. Selanjutnya admin akan mengecek berkas yang telah di upload</p>
 			</div>
 		</div>
 	</div>
 </div>
+</section>

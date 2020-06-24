@@ -1,6 +1,6 @@
-<div class="container mt-5">
+<div class="container"><br>
 	<div class="row">
-		<div class="col-md-6 pt-3" style="border: 2px solid #E0FFFF;">
+		<div class="col-md-6 mt-5 pt-3" style="border: 2px solid #E0FFFF;">
 			<h3 style="display: inline-block;" class="mb-3">Pendaftaran Pegawai</h3>
 			<button type="button" id="popo" class="btn btn-sm btn-warning" data-id="pop" data-toggle="popover" title="Perhatian!" data-content="Masukan data dengan benar agar proses pengajuan pensiun berjalan lancar!"><i class="fas fa-exclamation-circle"></i></button>
 			<?= $this->session->flashdata('msgSukses') ?>
