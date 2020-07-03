@@ -71,13 +71,15 @@ class Auth extends CI_Controller
 		} else {
 			$nip 	  = $this->input->post('nip');
 			$nama 	  = $this->input->post('nama');
-			$tgLahir 	  = $this->input->post('tgl_lahir');
+			$jk 	  = $this->input->post('jk');
+			$tgLahir  = $this->input->post('tgl_lahir');
 			$username = $this->input->post('username');
 			$password = $this->input->post('password1');
 
 			$simpanPegawai = [
 				'nip'		=> htmlspecialchars(strip_tags($nip)),
 				'nama'		=> htmlspecialchars(strip_tags($nama)),
+				'jenis_kelamin'		=> $jk,
 				'username'	=> htmlspecialchars(strip_tags($username)),
 				'password'	=> password_hash($password, PASSWORD_DEFAULT),
 				'tgl_lahir'	=> htmlspecialchars(strip_tags($tgLahir))

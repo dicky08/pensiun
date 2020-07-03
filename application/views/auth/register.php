@@ -18,6 +18,14 @@
 				</div>
 
 				<div class="form-group">
+					<select name="jk" id="jk" class="form-control">
+						<option value="">Jenis Kelamin</option>
+						<option value="Laki-Laki">Laki-Laki</option>
+						<option value="Perempuan">Perempuan</option>
+					</select>
+				</div>
+
+				<div class="form-group">
 					<label for="tgl_lahir">Tanggal Lahir</label>
 					<input type="date" id="tgl_lahir" name="tgl_lahir" class="form-control">
 				</div>
@@ -47,3 +55,4 @@
 		</div>
 	</div>
 </div>
+<br><br>

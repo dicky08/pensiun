@@ -2,8 +2,8 @@
 	<div class="carousel-inner">
 		<div class="carousel-item active">
 			<div class="carousel-caption d-none d-md-block slide">
-				<h2 style="margin-top: -50px;">Yuk Ajukan Pensiun!</h2>
-				<p>Jangan lupa siapkan persyaratannya!.</p>
+				<h2 style="margin-top: -50px; color: black">Yuk Ajukan Pensiun!</h2>
+				<p style="color: black">Jangan lupa siapkan persyaratannya!</p>
 			</div>
 			<img src="<?= base_url('assets/img/slider1.jpg') ?>" class="d-block w-100" height="700" alt="...">
 		</div>
@@ -56,3 +56,5 @@
 	</div>
 </div>
 </section>
+
+				

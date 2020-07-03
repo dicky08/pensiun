@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2020 at 06:29 AM
+-- Generation Time: Jul 03, 2020 at 10:19 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -44,26 +44,6 @@ INSERT INTO `admin` (`id_admin`, `username`, `nama`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jenis_kelamin`
---
-
-CREATE TABLE `jenis_kelamin` (
-  `id` int(11) NOT NULL,
-  `kd_kelamin` char(1) NOT NULL,
-  `jenis_kelamin` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `jenis_kelamin`
---
-
-INSERT INTO `jenis_kelamin` (`id`, `kd_kelamin`, `jenis_kelamin`) VALUES
-(1, 'l', 'Laki-Laki'),
-(2, 'p', 'Perempuan');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `kategori`
 --
 
@@ -90,6 +70,7 @@ INSERT INTO `kategori` (`id_kategori`, `nama_kategori`) VALUES
 CREATE TABLE `pegawai` (
   `nip` char(18) NOT NULL,
   `nama` varchar(128) NOT NULL,
+  `jenis_kelamin` varchar(20) NOT NULL,
   `tgl_lahir` date NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL
@@ -99,10 +80,9 @@ CREATE TABLE `pegawai` (
 -- Dumping data for table `pegawai`
 --
 
-INSERT INTO `pegawai` (`nip`, `nama`, `tgl_lahir`, `username`, `password`) VALUES
-('321513080296000112', 'Tete Setia', '2020-12-11', 'tete08', '$2y$10$GS8L5dEccgBM5ldXC3sEo.WdLOkkEi9dmi/Qw1.vGnrI3YyhCvAia'),
-('321513080296000113', 'Tete Setia2', '2020-12-12', 'tete09', '$2y$10$LHPk2ojBzpO7W42FfJ9cBeFbF/YQqfORC1N4l6mGMR4WyQa9/l2rO'),
-('321513080296000114', 'Tete Setia3', '2020-12-18', 'tete07', '$2y$10$GyFK76HfkCWYT6xemiPgQedHOG8IZqY3p4yFvaYP7wmR/C9oQS17e');
+INSERT INTO `pegawai` (`nip`, `nama`, `jenis_kelamin`, `tgl_lahir`, `username`, `password`) VALUES
+('321513080296000112', 'Tete Setia', '', '2020-12-11', 'tete08', '$2y$10$GS8L5dEccgBM5ldXC3sEo.WdLOkkEi9dmi/Qw1.vGnrI3YyhCvAia'),
+('321513080296000113', 'Tete Setia2', '', '2020-12-12', 'tete09', '$2y$10$LHPk2ojBzpO7W42FfJ9cBeFbF/YQqfORC1N4l6mGMR4WyQa9/l2rO');
 
 -- --------------------------------------------------------
 
@@ -154,16 +134,16 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id_admin`);
 
 --
--- Indexes for table `jenis_kelamin`
---
-ALTER TABLE `jenis_kelamin`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `kategori`
 --
 ALTER TABLE `kategori`
   ADD PRIMARY KEY (`id_kategori`);
+
+--
+-- Indexes for table `pegawai`
+--
+ALTER TABLE `pegawai`
+  ADD PRIMARY KEY (`nip`);
 
 --
 -- Indexes for table `pengajuan_pensiun`
@@ -183,12 +163,6 @@ ALTER TABLE `admin`
   MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `jenis_kelamin`
---
-ALTER TABLE `jenis_kelamin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
@@ -198,7 +172,7 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `pengajuan_pensiun`
 --
 ALTER TABLE `pengajuan_pensiun`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

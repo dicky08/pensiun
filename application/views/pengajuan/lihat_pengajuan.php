@@ -82,14 +82,17 @@
 		</table>
 	</div>
 </div>
-<div class="container">
+<div class="form-group" style="margin-left: 20px">
 	<?php if ($status == "proccess") : ?>
-		<div class="alert alert-info text-center">Menunggu Konfirmasi</div>
+		<div class="container">
+			<div class="alert alert-info text-center">Menunggu Konfirmasi</div>
+		</div>
 	<?php elseif ($status == "gagal") : ?>
-		<div style="text-align: center; font-size: 24px; letter-spacing: 1px;" class="alert alert-danger">Mohon Maaf Pengajuan anda gagal! Silahkan lakukan pengajuan sesuai dengan peraturan yang tertulis.</div>
+		<div class="container">
+			<div style="text-align: center; font-size: 24px; letter-spacing: 1px;" class="alert alert-danger">Mohon Maaf Pengajuan anda gagal! Silahkan lakukan pengajuan sesuai dengan peraturan yang tertulis.</div>
+		</div>
 	<?php else : ?>
 		<a href="<?= site_url('pengajuan/cetakSKPensiun'); ?>" class="btn btn-primary" target="_blank"><i class="fa fa-print"></i> Cetak SK</a>
 	<?php endif; ?>
 </div>
-
 <br><br><br><br><br><br>

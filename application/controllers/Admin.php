@@ -57,7 +57,43 @@ class Admin extends CI_Controller
 	}
 	public function janda_duda()
 	{
-		$data['data_pegawai'] = $this->pengajuan->getAll('pegawai')->result_array();
+		$data['list_jd'] = $this->pengajuan->joinPengajuanPegawaiKategori()->result_array();
+		$psanda = $data['list_jd'];
+		foreach ($psanda as $ps) {
+			$idKategori = $ps['id_kategori'];
+			if ($idKategori==1) {
+		$data['kategori'] 				= $ps['nama_kategori'];
+		$data['tglPengajuan'] 			= $ps['tgl_pengajuan'];
+		$data['tgl_lahir'] 				= $ps['tgl_lahir'];
+		$data['nip'] 					= $ps['nip'];
+		$data['idKategori'] 			= $ps['id_kategori'];
+		$data['nama'] 					= $ps['nama'];
+		$data['kategori'] 				= $ps['nama_kategori'];
+		$data['photo'] 					= $ps['photo'];
+		$data['karpeg'] 				= $ps['karpeg'];
+		$data['sk_cpns'] 				= $ps['sk_cpns'];
+		$data['sk_pns'] 				= $ps['sk_pns'];
+		$data['sk_pangkat_terakhir']	= $ps['sk_pangkat_terakhir'];
+		$data['kenaikan_gaji_terakhir'] = $ps['kenaikan_gaji_terakhir'];
+		$data['jabatan_terakhir'] 		= $ps['jabatan_terakhir'];
+		$data['sk_terakhir'] 			= $ps['sk_terakhir'];
+		$data['sasaran_kinerja'] 		= $ps['sasaran_kinerja'];
+		$data['ktp'] 					= $ps['ktp'];
+		$data['surat_nikah'] 			= $ps['surat_nikah'];
+		$data['kartu_keluarga'] 		= $ps['kartu_keluarga'];
+		$data['akta_kelahiran'] 		= $ps['akta_kelahiran'];
+		$data['surat_kuliah_anak'] 		= $ps['surat_kuliah_anak'];
+		$data['surat_kuliah_anak'] 		= $ps['surat_kuliah_anak'];
+		$data['surat_kematian'] 		= $ps['surat_kematian'];
+		$data['surat_janda_duda'] 		= $ps['surat_janda_duda'];
+		$data['status'] 				= $ps['status'];
+			}
+		}
+		$data['urlImage'] = '';
+		if ($data['idKategori'] == 1) {
+			$data['urlImage'] = 'assets/img-pengajuan/janda_duda/';
+		}
+		$data['table'] = "Table Janda Duda";
 		$data['title'] = "Janda/Duda";
 		$this->load->view('template_admin/header', $data);
 		$this->load->view('template_admin/navbar', $data);
@@ -77,7 +113,43 @@ class Admin extends CI_Controller
 	}
 	public function permintaan_sendiri()
 	{
-		$data['data_pegawai'] = $this->pengajuan->getAll('pegawai')->result_array();
+		$data['perm_sendiri'] = $this->pengajuan->joinPengajuanPegawaiKategori()->result_array();
+		$perm_sendiri = $data['perm_sendiri'];
+		foreach ($perm_sendiri as $ps) {
+			$idKategori = $ps['id_kategori'];
+			if ($idKategori==3) {
+		$data['kategori'] 				= $ps['nama_kategori'];
+		$data['tglPengajuan'] 			= $ps['tgl_pengajuan'];
+		$data['tgl_lahir'] 				= $ps['tgl_lahir'];
+		$data['nip'] 					= $ps['nip'];
+		$data['idKategori'] 			= $ps['id_kategori'];
+		$data['nama'] 					= $ps['nama'];
+		$data['kategori'] 				= $ps['nama_kategori'];
+		$data['photo'] 					= $ps['photo'];
+		$data['karpeg'] 				= $ps['karpeg'];
+		$data['sk_cpns'] 				= $ps['sk_cpns'];
+		$data['sk_pns'] 				= $ps['sk_pns'];
+		$data['sk_pangkat_terakhir']	= $ps['sk_pangkat_terakhir'];
+		$data['kenaikan_gaji_terakhir'] = $ps['kenaikan_gaji_terakhir'];
+		$data['jabatan_terakhir'] 		= $ps['jabatan_terakhir'];
+		$data['sk_terakhir'] 			= $ps['sk_terakhir'];
+		$data['sasaran_kinerja'] 		= $ps['sasaran_kinerja'];
+		$data['ktp'] 					= $ps['ktp'];
+		$data['surat_nikah'] 			= $ps['surat_nikah'];
+		$data['kartu_keluarga'] 		= $ps['kartu_keluarga'];
+		$data['akta_kelahiran'] 		= $ps['akta_kelahiran'];
+		$data['surat_kuliah_anak'] 		= $ps['surat_kuliah_anak'];
+		$data['surat_kuliah_anak'] 		= $ps['surat_kuliah_anak'];
+		$data['surat_kematian'] 		= $ps['surat_kematian'];
+		$data['surat_janda_duda'] 		= $ps['surat_janda_duda'];
+		$data['status'] 				= $ps['status'];
+			}
+		}
+		$data['urlImage'] = '';
+		if ($data['idKategori'] == 3) {
+			$data['urlImage'] = 'assets/img-pengajuan/permintaan-sendiri/';
+		}
+		$data['table'] = "Table Permintaan Sendiri";
 		$data['title'] = "Permintaan Sendiri";
 		$this->load->view('template_admin/header', $data);
 		$this->load->view('template_admin/navbar', $data);
