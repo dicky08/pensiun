@@ -61,32 +61,32 @@ class Admin extends CI_Controller
 		$psanda = $data['list_jd'];
 		foreach ($psanda as $ps) {
 			$idKategori = $ps['id_kategori'];
-			if ($idKategori==1) {
-		$data['kategori'] 				= $ps['nama_kategori'];
-		$data['tglPengajuan'] 			= $ps['tgl_pengajuan'];
-		$data['tgl_lahir'] 				= $ps['tgl_lahir'];
-		$data['nip'] 					= $ps['nip'];
-		$data['idKategori'] 			= $ps['id_kategori'];
-		$data['nama'] 					= $ps['nama'];
-		$data['kategori'] 				= $ps['nama_kategori'];
-		$data['photo'] 					= $ps['photo'];
-		$data['karpeg'] 				= $ps['karpeg'];
-		$data['sk_cpns'] 				= $ps['sk_cpns'];
-		$data['sk_pns'] 				= $ps['sk_pns'];
-		$data['sk_pangkat_terakhir']	= $ps['sk_pangkat_terakhir'];
-		$data['kenaikan_gaji_terakhir'] = $ps['kenaikan_gaji_terakhir'];
-		$data['jabatan_terakhir'] 		= $ps['jabatan_terakhir'];
-		$data['sk_terakhir'] 			= $ps['sk_terakhir'];
-		$data['sasaran_kinerja'] 		= $ps['sasaran_kinerja'];
-		$data['ktp'] 					= $ps['ktp'];
-		$data['surat_nikah'] 			= $ps['surat_nikah'];
-		$data['kartu_keluarga'] 		= $ps['kartu_keluarga'];
-		$data['akta_kelahiran'] 		= $ps['akta_kelahiran'];
-		$data['surat_kuliah_anak'] 		= $ps['surat_kuliah_anak'];
-		$data['surat_kuliah_anak'] 		= $ps['surat_kuliah_anak'];
-		$data['surat_kematian'] 		= $ps['surat_kematian'];
-		$data['surat_janda_duda'] 		= $ps['surat_janda_duda'];
-		$data['status'] 				= $ps['status'];
+			if ($idKategori == 1) {
+				$data['kategori'] 				= $ps['nama_kategori'];
+				$data['tglPengajuan'] 			= $ps['tgl_pengajuan'];
+				$data['tgl_lahir'] 				= $ps['tgl_lahir'];
+				$data['nip'] 					= $ps['nip'];
+				$data['idKategori'] 			= $ps['id_kategori'];
+				$data['nama'] 					= $ps['nama'];
+				$data['kategori'] 				= $ps['nama_kategori'];
+				$data['photo'] 					= $ps['photo'];
+				$data['karpeg'] 				= $ps['karpeg'];
+				$data['sk_cpns'] 				= $ps['sk_cpns'];
+				$data['sk_pns'] 				= $ps['sk_pns'];
+				$data['sk_pangkat_terakhir']	= $ps['sk_pangkat_terakhir'];
+				$data['kenaikan_gaji_terakhir'] = $ps['kenaikan_gaji_terakhir'];
+				$data['jabatan_terakhir'] 		= $ps['jabatan_terakhir'];
+				$data['sk_terakhir'] 			= $ps['sk_terakhir'];
+				$data['sasaran_kinerja'] 		= $ps['sasaran_kinerja'];
+				$data['ktp'] 					= $ps['ktp'];
+				$data['surat_nikah'] 			= $ps['surat_nikah'];
+				$data['kartu_keluarga'] 		= $ps['kartu_keluarga'];
+				$data['akta_kelahiran'] 		= $ps['akta_kelahiran'];
+				$data['surat_kuliah_anak'] 		= $ps['surat_kuliah_anak'];
+				$data['surat_kuliah_anak'] 		= $ps['surat_kuliah_anak'];
+				$data['surat_kematian'] 		= $ps['surat_kematian'];
+				$data['surat_janda_duda'] 		= $ps['surat_janda_duda'];
+				$data['status'] 				= $ps['status'];
 			}
 		}
 		$data['urlImage'] = '';
@@ -117,32 +117,32 @@ class Admin extends CI_Controller
 		$perm_sendiri = $data['perm_sendiri'];
 		foreach ($perm_sendiri as $ps) {
 			$idKategori = $ps['id_kategori'];
-			if ($idKategori==3) {
-		$data['kategori'] 				= $ps['nama_kategori'];
-		$data['tglPengajuan'] 			= $ps['tgl_pengajuan'];
-		$data['tgl_lahir'] 				= $ps['tgl_lahir'];
-		$data['nip'] 					= $ps['nip'];
-		$data['idKategori'] 			= $ps['id_kategori'];
-		$data['nama'] 					= $ps['nama'];
-		$data['kategori'] 				= $ps['nama_kategori'];
-		$data['photo'] 					= $ps['photo'];
-		$data['karpeg'] 				= $ps['karpeg'];
-		$data['sk_cpns'] 				= $ps['sk_cpns'];
-		$data['sk_pns'] 				= $ps['sk_pns'];
-		$data['sk_pangkat_terakhir']	= $ps['sk_pangkat_terakhir'];
-		$data['kenaikan_gaji_terakhir'] = $ps['kenaikan_gaji_terakhir'];
-		$data['jabatan_terakhir'] 		= $ps['jabatan_terakhir'];
-		$data['sk_terakhir'] 			= $ps['sk_terakhir'];
-		$data['sasaran_kinerja'] 		= $ps['sasaran_kinerja'];
-		$data['ktp'] 					= $ps['ktp'];
-		$data['surat_nikah'] 			= $ps['surat_nikah'];
-		$data['kartu_keluarga'] 		= $ps['kartu_keluarga'];
-		$data['akta_kelahiran'] 		= $ps['akta_kelahiran'];
-		$data['surat_kuliah_anak'] 		= $ps['surat_kuliah_anak'];
-		$data['surat_kuliah_anak'] 		= $ps['surat_kuliah_anak'];
-		$data['surat_kematian'] 		= $ps['surat_kematian'];
-		$data['surat_janda_duda'] 		= $ps['surat_janda_duda'];
-		$data['status'] 				= $ps['status'];
+			if ($idKategori == 3) {
+				$data['kategori'] 				= $ps['nama_kategori'];
+				$data['tglPengajuan'] 			= $ps['tgl_pengajuan'];
+				$data['tgl_lahir'] 				= $ps['tgl_lahir'];
+				$data['nip'] 					= $ps['nip'];
+				$data['idKategori'] 			= $ps['id_kategori'];
+				$data['nama'] 					= $ps['nama'];
+				$data['kategori'] 				= $ps['nama_kategori'];
+				$data['photo'] 					= $ps['photo'];
+				$data['karpeg'] 				= $ps['karpeg'];
+				$data['sk_cpns'] 				= $ps['sk_cpns'];
+				$data['sk_pns'] 				= $ps['sk_pns'];
+				$data['sk_pangkat_terakhir']	= $ps['sk_pangkat_terakhir'];
+				$data['kenaikan_gaji_terakhir'] = $ps['kenaikan_gaji_terakhir'];
+				$data['jabatan_terakhir'] 		= $ps['jabatan_terakhir'];
+				$data['sk_terakhir'] 			= $ps['sk_terakhir'];
+				$data['sasaran_kinerja'] 		= $ps['sasaran_kinerja'];
+				$data['ktp'] 					= $ps['ktp'];
+				$data['surat_nikah'] 			= $ps['surat_nikah'];
+				$data['kartu_keluarga'] 		= $ps['kartu_keluarga'];
+				$data['akta_kelahiran'] 		= $ps['akta_kelahiran'];
+				$data['surat_kuliah_anak'] 		= $ps['surat_kuliah_anak'];
+				$data['surat_kuliah_anak'] 		= $ps['surat_kuliah_anak'];
+				$data['surat_kematian'] 		= $ps['surat_kematian'];
+				$data['surat_janda_duda'] 		= $ps['surat_janda_duda'];
+				$data['status'] 				= $ps['status'];
 			}
 		}
 		$data['urlImage'] = '';
@@ -195,6 +195,22 @@ class Admin extends CI_Controller
 				exit;
 			}
 		}
+	}
+	public function cetakDataPengajuan()
+	{
+		$mpdf = new \Mpdf\Mpdf();
+
+
+		$data['data_pengajuan_all'] = $this->pengajuan->joinPengajuanPegawaiKategori()->result_array();
+
+		$data['table'] = "Data Pengajuan Pensiun";
+		$data['title'] = "Data Pengajuan Pensiun";
+
+		$data['judul'] = "Data Pengajuan Pensiun";
+		$mpdf->addPage('P');
+		$html = $this->load->view('admin/cetakDataPengajuan', $data, TRUE);
+		$mpdf->WriteHtml($html);
+		$mpdf->Output();
 	}
 	public function logout()
 	{

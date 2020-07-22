@@ -63,6 +63,7 @@ $route['list_jd'] = 'admin/janda_duda';
 $route['list_bu'] = 'admin/batas_usia';
 $route['list_ps'] = 'admin/permintaan_sendiri';
 $route['cancel'] = 'admin/cancel';
+$route['cetakDataPengajuan'] = 'admin/cetakDataPengajuan';
 
 
 $route['register'] = 'auth/registrasi';

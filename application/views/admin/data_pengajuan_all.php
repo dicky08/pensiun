@@ -7,6 +7,7 @@
 		<div class="box">
 			<div class="box-header">
 				<h3 class="box-title"><?= $table; ?></h3>
+				<a href="<?= site_url('cetakDataPengajuan') ?>" class="btn btn-sm btn-primary" target="_blank"><i class="fa fa-print"></i> Cetak Data Pengajuan</a>
 			</div>
 
 			<div class="box-body table-responsive pl-3">

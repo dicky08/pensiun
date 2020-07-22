@@ -36,7 +36,7 @@ class Auth extends CI_Controller
 						'username'  => $username
 					];
 					$this->session->set_userdata('sesi', $dataSession);
-					echo "<script>alert('Login berhasil. Silahkan pilih jenis pensiun!')</script>";
+					echo "<script>alert('Login berhasil!')</script>";
 					redirect('pegawai', 'refresh');
 				} else {
 					$this->session->set_flashdata('msgError', '<div class="alert alert-danger"role="alert">Username atau Password salah!</div>');
@@ -84,6 +84,8 @@ class Auth extends CI_Controller
 				'password'	=> password_hash($password, PASSWORD_DEFAULT),
 				'tgl_lahir'	=> htmlspecialchars(strip_tags($tgLahir))
 			];
+			var_dump($simpanPegawai);
+			die;
 			// Simpan data
 			$this->pengajuan->insert_data($simpanPegawai, 'pegawai');
 
